@@ -6,6 +6,10 @@ test("renders learn react link", () => {
   const linkElement = screen.getByText(/learn react/i);
   // const linkElement = screen.queryByText(/hi react/i);
   // const linkElement = screen.findByText(/learn react/i);
+
+  // const lintTest = screen.getByRole("button", { name: "lintTest" });
+  // expect(lintTest).toHaveTextContent("lintTest");
+
   expect(linkElement).toBeInTheDocument();
 });
 
