@@ -3,12 +3,12 @@ import axios from "axios";
 import Products from "./Products";
 import Options from "./Options";
 import ErrorBanner from "../../components/ErrorBanner";
-// import { OrderContext } from "../../contexts/OrderContext";
+import { OrderContext } from "../../contexts/OrderContext";
 
 function Type({ orderType }) {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
-  // const [orderDatas, updateItemCount] = useContext(OrderContext);
+  const [orderDatas, updateItemCount] = useContext(OrderContext);
 
   useEffect(() => {
     loadItems(orderType);
@@ -34,9 +34,9 @@ function Type({ orderType }) {
       key={item.name}
       name={item.name}
       imagePath={item.imagePath}
-      // updateItemCount={(itemName, newItemCount) =>
-      //   updateItemCount(itemName, newItemCount, orderType)
-      // }
+      updateItemCount={(itemName, newItemCount) =>
+        updateItemCount(itemName, newItemCount, orderType)
+      }
     />
   ));
 
@@ -45,7 +45,9 @@ function Type({ orderType }) {
     <>
       <h2>주문 종류</h2>
       <p>하나의 가격</p>
-      <p>{/* {orderTypeKorean} 총 가격: {orderDatas.totals[orderType]} */}</p>
+      <p>
+        {orderTypeKorean} 총 가격: {orderDatas.totals[orderType]}
+      </p>
       <div
         style={{
           display: "flex",
