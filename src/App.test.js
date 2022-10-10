@@ -147,6 +147,13 @@ test("From order to order completion", async () => {
   const firstPageButton = screen.getByRole("button", { name: "첫페이지로" });
   userEvent.click(firstPageButton);
 
+  // 첫 페이지로 간 이후에 초기화
+  const productsTotal = screen.getByText("삼품 총 가격: 0");
+  expect(productsTotal).toBeInTheDocument();
+
+  const optionsTotal = screen.getByText("옵션 총 가격: 0");
+  expect(optionsTotal).toBeInTheDocument();
+
   // act 에러 해결
   await waitFor(() => {
     screen.getByRole("spinbutton", { name: "America" });
